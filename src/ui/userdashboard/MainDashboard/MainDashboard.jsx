@@ -1,6 +1,8 @@
+import { useEffect } from "react"
 import { ChartSection, ChartTitle, DashboardContainer, DashboardHeader, DashboardSummary, DashboardTitle, EmployeeAvatar, EmployeeDetails, EmployeeEmail, EmployeeItem, EmployeeList, EmployeeName, Schedule, ScheduleDate, ScheduleHeader, ScheduleItem, ScheduleTitle, SummaryBox, SummaryTitle, SummaryValue, TaskDescription, TaskTime } from "./MainDashboard.styles"
 
 const MainDashboard = () => {
+
   return (
     <DashboardContainer>
 

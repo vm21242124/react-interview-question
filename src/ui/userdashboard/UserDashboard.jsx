@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import LeftMenu from "../common/LeftMenu/LeftMenu"
 import NewBlog from "./NewBlog/NewBlog";
-import { createContext,  useState } from "react";
+import { createContext,  useEffect,  useState } from "react";
 import MainDashboard from './MainDashboard/MainDashboard'
 import YourBlogs from "./YourBlogs/YourBlogs";
 import Profile from "./Profile/Profile";
@@ -26,7 +26,12 @@ const UserDashboard = () => {
     currTab,
     setCurrTab
   }
-
+  useEffect(()=>{
+    for(let i=0;i<1000;i++){
+      // console.log(i);
+      
+    }
+  },[])
   return (
     <Provider store={store}>
     <UserDashBoardContenxt.Provider value={data}>
