@@ -1,60 +1,24 @@
 
 import './App.css'
 
-import React, { lazy, Suspense, Profiler, useEffect, useState } from 'react'
+import React, { lazy } from 'react'
+import { LazyLoadingEg } from './concepts/LazyLoading';
+import { CostumHooksEg } from './concepts/CustomHooks';
+import { CounterContextWrapper } from './concepts/CounterContext';
+import ContextFetching from './concepts/ContextFetching';
+import { Provider } from 'react-redux';
+import Contercmp from './concepts/Contercmp';
+import { store } from './concepts/Redux';
+import Navbar from './ui/common/LeftMenu/Navbar';
+import Hero from './ui/common/LeftMenu/Hero';
+const About = lazy(()=>import('./ui/common/LeftMenu/About'));
+const Contact = lazy(()=>import( './ui/common/LeftMenu/Contact'));
+const ClassBasedComponents =lazy(()=>import('./concepts/ClassBasedComponents'));
 
-const UserDashboard = lazy(() => import('./ui/userdashboard/UserDashboard'))
-const Loading = () => {
+const Services = lazy(()=>import("./ui/common/LeftMenu/Services"))
 
-  return (
-    <>
-      Loading
-    </>
-  )
-}
-const HOC = (WropperComponent, entity) => {
-  return function (props) {
-    let data;
-    useEffect(() => {
-      const fetchData = async () => {
 
-        const res = await fetch(`https://jsonplaceholder.typicode.com/${entity}`);
-        data=await res.json();
 
-      }
-      fetchData();
-    }, [entity])
-    const handleChange=(e)=>{
-      data=data.find((item)=>item.name === e.target.value);
-    }
-
-    return (
-      <>
-      <input type="text" onChange={handleChange} />
-        <WropperComponent {...props} data={data} />
-      </>
-
-    )
-  }
-
-}
-const UserData = ({ data }) => {
-
-  return (
-    <div>{data?.map((item, key) => (
-      <div key={key}>{item.name}</div>
-    ))}</div>
-  )
-}
-const TodoData = ({ data }) => {
-  return (
-    <div>{data?.slice(0, 10)?.map((item, key) => (
-      <div key={key}>{item.title}</div>
-    ))}</div>
-  )
-}
-const TodoList = HOC(TodoData, "todos")
-const UserList = HOC(UserData, "users")
 function App() {
   function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
     console.log({ id, phase, actualDuration, baseDuration, startTime, commitTime });
@@ -62,14 +26,22 @@ function App() {
 
   return (
     <>
-      {/* <Suspense fallback={<Loading/>}>
-    <Profiler id='userdashboard' onRender={onRender}>
+    {/* <CounterContextWrapper>
+      <LazyLoadingEg/>
+      <CostumHooksEg/>
+      <ContextFetching/>
+    </CounterContextWrapper>
 
-    <UserDashboard/>
-    </Profiler>
-    </Suspense> */}
-      <UserList />
-      <TodoList />
+    <Provider store={store}>
+      <Contercmp/>
+    </Provider> */}
+    <Navbar/>
+    <Hero/>
+    <About/>
+    <Services/>
+    <Contact/>
+
+    {/* <ClassBasedComponents title="Passed by props"/> */}
     </>
   )
 }
