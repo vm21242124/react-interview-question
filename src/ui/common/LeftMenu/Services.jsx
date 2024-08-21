@@ -60,7 +60,6 @@ const ServicesList = styled.ul`
 
 const ServiceItem = styled.li`
   flex: 1 1 30%;
-  max-width: 30%;
   margin: 10px;
   background: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -118,7 +117,7 @@ const Services = () => {
             </SectionSubtitle>
             <ServicesList>
               <ServiceItem>
-                <ServiceLink href="/web-development">
+                <ServiceLink >
                   <ServiceImage imageUrl="https://cdn.b12.io/client_media/h0JSDDVw/de999ab6-57b1-11ef-833c-0242ac110002-jpg-regular_image.jpeg" />
                   <ServiceContent>
                     <ServiceHeader>
@@ -135,7 +134,7 @@ const Services = () => {
               </ServiceItem>
 
               <ServiceItem>
-                <ServiceLink href="/mobile-development">
+                <ServiceLink >
                   <ServiceImage imageUrl="https://cdn.b12.io/client_media/h0JSDDVw/deb0dd48-57b1-11ef-833c-0242ac110002-jpg-regular_image.jpeg" />
                   <ServiceContent>
                     <ServiceHeader>
@@ -152,7 +151,7 @@ const Services = () => {
               </ServiceItem>
 
               <ServiceItem>
-                <ServiceLink href="/website-deployment">
+                <ServiceLink >
                   <ServiceImage imageUrl="https://cdn.b12.io/client_media/h0JSDDVw/df5d406a-57b1-11ef-833c-0242ac110002-jpg-regular_image.jpeg" />
                   <ServiceContent>
                     <ServiceHeader>

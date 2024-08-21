@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import closeicon from '../../../assets/closeicon.svg'
 
 const NavbarContainer = styled.div`
   position: fixed;
@@ -47,15 +48,35 @@ const Nav = styled.nav`
   }
 `;
 
+const VerticalNav = styled.nav`
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
 const NavList = styled.ul`
   list-style: none;
   display: flex;
   gap: 2rem;
 `;
 
+const VerticalNavList = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+`;
+
 const NavItem = styled.li`
   position: relative;
-  cursor:pointer;
+  cursor: pointer;
+`;
+
+const VerticalNavItem = styled.li`
+  position: relative;
+  cursor: pointer;
+  text-align:center;
+  padding:5px
 `;
 
 const NavLink = styled.a`
@@ -67,29 +88,61 @@ const NavLink = styled.a`
   }
 `;
 
+const VerticalNavLink = styled.a`
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  &:hover {
+    border-bottom: 2px solid #000;
+  }
+`;
+const CloseIcon=styled.img`
+  width:30px;
+  hieght:30px;
+`
+
 const Navbar = () => {
-  const navitems=["Home","About","Services","Contact"]
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const navItems = ["Home", "About", "Services", "Contact"];
+
+  const toggleMenu = () => {
+    setIsOpenMenu(!isOpenMenu);
+  };
+
   return (
     <NavbarContainer>
       <NavbarSection>
-        <Brand href="/index">We17</Brand>
-        <MobileNavButton aria-label="Show navigation">
+        <Brand>We17</Brand>
+        <MobileNavButton aria-label="Show navigation" onClick={toggleMenu}>
+          {isOpenMenu? <CloseIcon src={closeicon} />:
+          <>
           <MobileNavButtonLine />
           <MobileNavButtonLine />
           <MobileNavButtonLine />
+          </>
+          }
+          
         </MobileNavButton>
+        
         <Nav aria-label="Main">
           <NavList>
-          {navitems.map((item,key)=>(
-            <NavItem>
-
-              <NavLink key={key}>{item}</NavLink>
-            </NavItem>
-          ))}
-          
+            {navItems.map((item, key) => (
+              <NavItem key={key}>
+                <NavLink>{item}</NavLink>
+              </NavItem>
+            ))}
           </NavList>
         </Nav>
       </NavbarSection>
+      <VerticalNav isOpen={isOpenMenu} aria-label="Main">
+          <VerticalNavList>
+            {navItems.map((item, key) => (
+              <VerticalNavItem key={key}>
+                <VerticalNavLink>{item}</VerticalNavLink>
+              </VerticalNavItem>
+            ))}
+          </VerticalNavList>
+        </VerticalNav>
     </NavbarContainer>
   );
 };

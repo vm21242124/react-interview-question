@@ -17,12 +17,12 @@ const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  text-align: left;
+  flex-direction: column-reverse;
 `;
 
 const Column = styled.div`
   flex: 1;
-  max-width: 600px;
+  max-width:1220px;
   padding: 1rem;
 `;
 
@@ -32,6 +32,7 @@ const TextImageContent = styled.div`
 
 const Title = styled.h2`
   font-size: 2.5rem;
+  text-align:center;
   margin-bottom: 1rem;
   animation: slide-up 0.4s ease-in-out;
   @keyframes slide-up {
@@ -99,17 +100,17 @@ const About = () => {
   return (
     <AboutSection id="about">
       <Container>
+              <Title>Who we are</Title>
         <Row>
           <Column>
             <TextImageContent>
-              <Title>Who we are</Title>
               <Subtitle>
                 Dedicated to <span>innovation</span>
               </Subtitle>
               <Paragraph>
-              WE17 is a dynamic group of 17 skilled developers specializing in providing comprehensive end-to-end solutions for web and mobile applications. Our expertise spans the entire development lifecycle, from initial concept and design to deployment and ongoing maintenance. We are dedicated to delivering high-quality, scalable, and efficient solutions that meet the unique needs of our clients, ensuring their products are always performing at their best.
+                WE17 is a dynamic group of 17 skilled developers specializing in providing comprehensive end-to-end solutions for web and mobile applications. Our expertise spans the entire development lifecycle, from initial concept and design to deployment and ongoing maintenance. We are dedicated to delivering high-quality, scalable, and efficient solutions that meet the unique needs of our clients, ensuring their products are always performing at their best.
               </Paragraph>
-              <CTAButton href="/index#contact">Get in touch</CTAButton>
+              <CTAButton >Get in touch</CTAButton>
             </TextImageContent>
           </Column>
           <Column>
