@@ -1,0 +1,65 @@
+create table employee(
+    employeeId int primary key auto increment,
+    firstName varchar(20) not null,
+    lastName varchar(20) not null,
+    departmentId int not null,
+    salary decimal not null
+);
+
+insert into employee ( firstName, lastName, departmentId, salary) values
+ ("vinod","mali",1,23500.0),
+ ("bhushan","devere",2,22500.0),
+ ("dhruv","ozarkar",3,33500.0);
+
+ create table department(
+    departmentId int primary key auto increment,
+    departmentName varchar(20) not null
+ )
+
+
+ select a.firstName,a.lastName, b.departmentName from employee a inner join department b on a.departmentId= b.departmentId;
+
+ select * from employee where salary > 20000;
+
+ select sum(salary) as totalSalary from  employee;
+  select sum(salary) as totalSalary from  employee;
+
+
+worker 
+    -userId
+    - name
+    -email
+    -phone
+    - isVerified defaut false
+
+admin 
+    -name
+    -email
+    -phone
+
+
+products
+    -productid
+    -desc
+    -price
+
+errors
+    -errorId
+    -desc
+    -productId
+    - workerId
+    - status
+
+
+
+/worker/login - login route for worker
+/worker/report -middleware to check if worker is verified and login - route to report error about product it will take productId ,desc ,workerId
+/worker/getreport - error list reported by self
+
+
+/admin/login - login route for admin
+/admin/getunverifieduser - return list of unverified user
+/admin/verifyuser/userId - middleware for checking that role is admin -update in worker set isVerified true
+
+/admin/getproduct - return list of products
+/admin/getreport - return list of errors about product

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import teamImg from '../../../team.jpg'
 
 const AboutSection = styled.section`
   padding: 4rem 0;
@@ -106,7 +107,7 @@ const About = () => {
                 Dedicated to <span>innovation</span>
               </Subtitle>
               <Paragraph>
-                Based in Mumbai, We17 specializes in delivering top-tier freelancing services in web development and mobile development. Our team of experts is committed to harnessing the power of technology to bring your ideas to life. From concept to deployment, we ensure that every project reflects your vision and meets your needs. Partner with us to experience seamless development and outstanding results.
+              WE17 is a dynamic group of 17 skilled developers specializing in providing comprehensive end-to-end solutions for web and mobile applications. Our expertise spans the entire development lifecycle, from initial concept and design to deployment and ongoing maintenance. We are dedicated to delivering high-quality, scalable, and efficient solutions that meet the unique needs of our clients, ensuring their products are always performing at their best.
               </Paragraph>
               <CTAButton href="/index#contact">Get in touch</CTAButton>
             </TextImageContent>
@@ -114,7 +115,7 @@ const About = () => {
           <Column>
             <ImageWrapper>
               <Image
-                src="https://cdn.b12.io/client_media/h0JSDDVw/dcbc1aac-57b1-11ef-bf83-0242ac110002-jpg-hero_image.jpeg"
+                src={teamImg}
                 alt="Design smartphone definition"
               />
             </ImageWrapper>

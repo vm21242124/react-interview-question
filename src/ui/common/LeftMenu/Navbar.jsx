@@ -55,6 +55,7 @@ const NavList = styled.ul`
 
 const NavItem = styled.li`
   position: relative;
+  cursor:pointer;
 `;
 
 const NavLink = styled.a`
@@ -67,6 +68,7 @@ const NavLink = styled.a`
 `;
 
 const Navbar = () => {
+  const navitems=["Home","About","Services","Contact"]
   return (
     <NavbarContainer>
       <NavbarSection>
@@ -78,18 +80,13 @@ const Navbar = () => {
         </MobileNavButton>
         <Nav aria-label="Main">
           <NavList>
+          {navitems.map((item,key)=>(
             <NavItem>
-              <NavLink href="/index#home">Home</NavLink>
+
+              <NavLink key={key}>{item}</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="/index#about">About</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/index#services">Services</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/index#contact">Contact</NavLink>
-            </NavItem>
+          ))}
+          
           </NavList>
         </Nav>
       </NavbarSection>

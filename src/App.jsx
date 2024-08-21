@@ -1,48 +1,22 @@
-
-import './App.css'
-
-import React, { lazy } from 'react'
-import { LazyLoadingEg } from './concepts/LazyLoading';
-import { CostumHooksEg } from './concepts/CustomHooks';
-import { CounterContextWrapper } from './concepts/CounterContext';
-import ContextFetching from './concepts/ContextFetching';
-import { Provider } from 'react-redux';
-import Contercmp from './concepts/Contercmp';
-import { store } from './concepts/Redux';
-import Navbar from './ui/common/LeftMenu/Navbar';
-import Hero from './ui/common/LeftMenu/Hero';
-const About = lazy(()=>import('./ui/common/LeftMenu/About'));
-const Contact = lazy(()=>import( './ui/common/LeftMenu/Contact'));
-const ClassBasedComponents =lazy(()=>import('./concepts/ClassBasedComponents'));
-
+import { lazy,Suspense } from "react"
+import { FullScreenLoader } from "./ui/common/Loader";
+const Contact = lazy(()=>import("./ui/common/LeftMenu/Contact"));
+const Hero = lazy(()=>import("./ui/common/LeftMenu/Hero"));
+const Navbar = lazy(()=>import("./ui/common/LeftMenu/Navbar"));
 const Services = lazy(()=>import("./ui/common/LeftMenu/Services"))
 
-
-
+const About =lazy(()=>import( "./ui/common/LeftMenu/About"))
 function App() {
-  function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
-    console.log({ id, phase, actualDuration, baseDuration, startTime, commitTime });
-  }
+  
 
   return (
-    <>
-    {/* <CounterContextWrapper>
-      <LazyLoadingEg/>
-      <CostumHooksEg/>
-      <ContextFetching/>
-    </CounterContextWrapper>
-
-    <Provider store={store}>
-      <Contercmp/>
-    </Provider> */}
+    <Suspense fallback={<FullScreenLoader/>}>
     <Navbar/>
     <Hero/>
     <About/>
     <Services/>
     <Contact/>
-
-    {/* <ClassBasedComponents title="Passed by props"/> */}
-    </>
+    </Suspense>
   )
 }
 
